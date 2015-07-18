@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.primary {
+  width: 63%;
+  float: right;
+  padding: 50px 0 0 0;
+}
+
+/**** SIDEBAR *****/
+
+.sidebar {
+  width: 30%;
+  padding: 50px 0 0 11%;
+  margin: 0;
+}
+
+.person img {
+  width:233px;
+  border-radius: 6px;
+}
+
+.person h3 {
+  font-size: 1.7em;
+  margin: 5px 0;
+}
+
+.person h4 {
+  margin: 5px 0;
+  font-size: 1.3em;
+  font-weight: normal;
+}
+
+.about {
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  margin: 15px 0;
+  font-size: 14px;
+  line-height: 10px;
+}
+
+.about a {
+  text-decoration: none;
+  color: blue;
+}
+
+.follow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.follow a {
+  text-decoration: none;
+}
+.follow li {
+  display: inline-block;
+  padding: 0 15px;
+}
+
+.number {
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: 600;
+  margin: 0;
+}
+
+.social-text {
+  color: #888;
+  font-size: 11px;
+  margin: 0;
+}

@@ -1,28 +1,62 @@
 var $primary = $('.primary');
 var $sidebar = $('.sidebar');
+var $person = $('.person');
 var $about = $('.about');
+var $followers = $('#followers');
+var $star = $('#star');
+var $following = $('#following');
+var $repos = $('.repos')
+
 var profileUrl = 'https://api.github.com/users/jeremybdavis';
 var reposUrl = 'https://api.github.com/users/jeremybdavis/repos';
 
 
 $.ajax(profileUrl,{
   error: function(){
-    $primary.text('Bummer.' + error);
+    $sidebar.text('Bummer.' + error);
   },
   success: function(data){
     var profile = data;
     var avatar = profile.avatar_url;
 
+    // PERSON
     $img = $('<img>').attr('src', avatar);
-    $sidebar.append($img);
+    $person.append($img);
 
     $h3 = $('<h3>').text(profile.name);
-    $sidebar.append($h3);
+    $person.append($h3);
 
     $h4 = $('<h4>').text(profile.login);
-    $sidebar.append($h4);
+    $person.append($h4);
 
+    // ABOUT
+    $p = $('<p class="city">').text(profile.location);
+    $about.append($p);
 
+    $a = $('<a href=http://www.jeremydavis.co>').text(profile.blog);
+    $about.append($a);
+
+    $p = $('<p class="joined">').text("Joined on " + moment(profile.created_at).fromNow());
+    $about.append($p);
+
+    // SOCIAL
+    $p = $('<p class="number">').text(profile.followers);
+    $followers.append($p);
+
+    $p = $('<p class="social-text">').text("Followers");
+    $followers.append($p);
+
+    $p = $('<p class="number">').text(profile.public_gists);
+    $star.append($p);
+
+    $p = $('<p class="social-text">').text("Starred");
+    $star.append($p);
+
+    $p = $('<p class="number">').text(profile.following);
+    $following.append($p);
+
+    $p = $('<p class="social-text">').text("Following");
+    $following.append($p);
 
 
     console.log(profile);
@@ -33,11 +67,85 @@ $.ajax(reposUrl,{
   error: function(){
     $primary.text('Bummer' + error);
   },
-  success: function(data){
-    var repos = data;
+  success: function(repos, textStatus, xhr){
+    repos.forEach(function(repo){
+      $repos.append('<h3><a href="'+ repo.html_url+'">'+ repo.name + '</a></h3>');
+      $repos.append('<p>' + "Updated " + moment(repo.updated_at).fromNow() + '</p>');
+    });
 
-    $h3 = $('<a href=https://github.com/jeremybdavis/Assignment7_Pt1>').text(repos[0].name);
-    $primary.append($h3);
+    // // REPO 0
+    // $h3 = $('<a href=https://github.com/jeremybdavis/ajax_assignment08>').text(repos[0].name);
+    // $repo0.append($h3);
+    //
+    // $p = $('<p class="update">').text("Updated " + repos[0].updated_at);
+    // $repo0.append($p);
+    //
+    // $p = $('<li>').text(repos[0].language);
+    //
+    //
+    // $a = $('<a href="#">').text(repos[0].stargazers_count);
+    //
+    //
+    // $a = $('<a href="#">').text(repos[0].forks_count);
+
+
+    // // REPO 1
+    // $h3 = $('<a href=https://github.com/jeremybdavis/Assignment7_Pt1>').text(repos[1].name);
+    // $repo1.append($h3);
+    //
+    // $p = $('<p class="update">').text("Updated " + repos[1].updated_at);
+    // $repo1.append($p);
+    //
+    // $p = $('<li>').text(repos[1].language);
+    //
+    //
+    // $a = $('<a href="#">').text(repos[1].stargazers_count);
+    //
+    //
+    // // REPO 2
+    // $h3 = $('<a href=https://github.com/jeremybdavis/Assignment7_Pt2>').text(repos[2].name);
+    // $repo2.append($h3);
+    //
+    // $p = $('<p class="update">').text("Updated " + repos[2].updated_at);
+    // $repo2.append($p);
+    //
+    // $p = $('<li>').text(repos[2].language);
+    //
+    //
+    // // REPO 6
+    // $h3 = $('<a href=https://github.com/jeremybdavis/functions_js>').text(repos[6].name);
+    // $repo6.append($h3);
+    //
+    // $p = $('<p class="update">').text("Updated " + repos[6].updated_at);
+    // $repo6.append($p);
+    //
+    // $p = $('<li>').text(repos[6].language);
+    //
+    //
+    // // REPO 4
+    // $h3 = $('<a href=https://github.com/jeremybdavis/calculator>').text(repos[4].name);
+    // $repo4.append($h3);
+    //
+    // $p = $('<p class="update">').text("Updated " + repos[4].updated_at);
+    // $repo4.append($p);
+    //
+    // $p = $('<li>').text(repos[4].language);
+    //
+    //
+    // // REPO 7
+    // $h3 = $('<a href=https://github.com/jeremybdavis/class-intro-to-pr>').text(repos[7].name);
+    // $repo7.append($h3);
+    //
+    // $p = $('<p class="update">').text("Updated " + repos[7].updated_at);
+    // $repo7.append($p);
+    //
+    // $p = $('<li>').text(repos[7].language);
+
+
+
+
+
+
     console.log(repos);
   }
 });
