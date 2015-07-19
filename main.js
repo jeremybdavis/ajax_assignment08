@@ -71,9 +71,11 @@ $.ajax(reposUrl,{
     repos.forEach(function(repo){
       $repos.append('<h3><a href="'+ repo.html_url+'">'+ repo.name + '</a></h3>');
       $repos.append('<p>' + "Updated " + moment(repo.updated_at).fromNow() + '</p>');
-      $repos.append('<li>' + '<p class="language">' + repo.language + '</p></li>');
-      $repos.append('<li>' + '<p class="stargazers">' + '<a href="' + repo.stargazers_url + '">' + '<span class="octicon octicon-star"></span>' + repo.stargazers_count + '</a></p>');
-      $repos.append('<li>' + '<p class="forks">' + '<a href="' + repo.forks_url + '">' + '<span class="octicon octicon-repo-forked"></span>' + repo.forks_count + '</a></p>')
+      $repos.append('<li>' + '<p class="forks">' + '<a href="' + repo.forks_url + '">' + '<span class="octicon octicon-repo-forked"></span>' + repo.forks_count + '</a></p></li>');
+      $repos.append('<li>' + '<p class="stargazers">' + '<a href="' + repo.stargazers_url + '">' + '<span class="octicon octicon-star"></span>' + repo.stargazers_count + '</a></p></li>');
+      $repos.append('<li><p class="language">' + repo.language + '</p></li>');
+
+
     });
 
     // // REPO 0
