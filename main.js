@@ -30,13 +30,13 @@ $.ajax(profileUrl,{
     $person.append($h4);
 
     // ABOUT
-    $p = $('<p class="city">').text(profile.location);
+    $p = $('<p class="city">' + '<span class="octicon octicon-location"></span>' + profile.location + '</p>');
     $about.append($p);
 
-    $a = $('<a href=http://www.jeremydavis.co>').text(profile.blog);
+    $a = $('<p>' + '<span class="octicon octicon-link"></span>' + '<a href="'+ profile.url+'">' + profile.blog + '</a></p>');
     $about.append($a);
 
-    $p = $('<p class="joined">').text("Joined on " + moment(profile.created_at).fromNow());
+    $p = $('<p class="joined">' + '<span class="octicon octicon-clock"></span>' + "Joined on " + moment(profile.created_at).fromNow() + '</p>');
     $about.append($p);
 
     // SOCIAL
@@ -71,6 +71,7 @@ $.ajax(reposUrl,{
     repos.forEach(function(repo){
       $repos.append('<h3><a href="'+ repo.html_url+'">'+ repo.name + '</a></h3>');
       $repos.append('<p>' + "Updated " + moment(repo.updated_at).fromNow() + '</p>');
+      $repos.append()
     });
 
     // // REPO 0
