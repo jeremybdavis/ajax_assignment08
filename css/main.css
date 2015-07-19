@@ -3,17 +3,56 @@
   font-family: 'Helvetica', sans-serif;
 }
 
+body {
+  padding: 50px 11% 0 11%;
+}
+
 .primary {
-  width: 63%;
+  width: 76%;
   float: right;
-  padding: 50px 0 0 0;
+  padding: 0 0 0 20px;
+}
+
+.repos li {
+  display: inline-block;
+  list-style: none;
+  color: #696969;
+}
+
+.repos h3 {
+  border-top: 1px solid #e8e8e8;
+  padding: 25px 0 0 0;
+  margin: 0 0 10px 0;
+}
+
+.repos h3 a {
+  color: #006FAE;
+}
+
+.repos p {
+  font-size: 13px;
+  margin: 13px 0 25px 0;
+  color: #696969;
+}
+
+.repos li a {
+  color: #696969;
+  padding: 0 0 0 10px;
+  text-decoration: none;
+}
+
+.repos li a:hover {
+  color: #006fae;
+}
+
+.repos span {
+  padding: 0 5px 0 0;
 }
 
 /**** SIDEBAR *****/
 
 .sidebar {
-  width: 30%;
-  padding: 50px 0 0 11%;
+  width: 24%;
   margin: 0;
 }
 
@@ -39,11 +78,12 @@
   margin: 15px 0;
   font-size: 14px;
   line-height: 10px;
+  padding: 10px 0;
 }
 
 .about a {
   text-decoration: none;
-  color: blue;
+  color: #006FAE;
 }
 
 .about p {
@@ -52,6 +92,7 @@
 
 .octicon.octicon-location, .octicon.octicon-link, .octicon.octicon-clock {
   padding: 0 10px 0 0;
+  color: #bdbdbd;
 }
 
 .follow {
@@ -63,6 +104,7 @@
 
 .follow a {
   text-decoration: none;
+  color: #006FAE;
 }
 .follow li {
   display: inline-block;

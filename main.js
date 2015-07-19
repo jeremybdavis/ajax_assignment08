@@ -5,7 +5,7 @@ var $about = $('.about');
 var $followers = $('#followers');
 var $star = $('#star');
 var $following = $('#following');
-var $repos = $('.repos')
+var $repos = $('.repos');
 
 var profileUrl = 'https://api.github.com/users/jeremybdavis';
 var reposUrl = 'https://api.github.com/users/jeremybdavis/repos';
@@ -36,7 +36,7 @@ $.ajax(profileUrl,{
     $a = $('<p>' + '<span class="octicon octicon-link"></span>' + '<a href="'+ profile.url+'">' + profile.blog + '</a></p>');
     $about.append($a);
 
-    $p = $('<p class="joined">' + '<span class="octicon octicon-clock"></span>' + "Joined on " + moment(profile.created_at).fromNow() + '</p>');
+    $p = $('<p class="joined">' + '<span class="octicon octicon-clock"></span>' + "Joined " + moment(profile.created_at).fromNow() + '</p>');
     $about.append($p);
 
     // SOCIAL
@@ -71,7 +71,9 @@ $.ajax(reposUrl,{
     repos.forEach(function(repo){
       $repos.append('<h3><a href="'+ repo.html_url+'">'+ repo.name + '</a></h3>');
       $repos.append('<p>' + "Updated " + moment(repo.updated_at).fromNow() + '</p>');
-      $repos.append()
+      $repos.append('<li>' + '<p class="language">' + repo.language + '</p></li>');
+      $repos.append('<li>' + '<p class="stargazers">' + '<a href="' + repo.stargazers_url + '">' + '<span class="octicon octicon-star"></span>' + repo.stargazers_count + '</a></p>');
+      $repos.append('<li>' + '<p class="forks">' + '<a href="' + repo.forks_url + '">' + '<span class="octicon octicon-repo-forked"></span>' + repo.forks_count + '</a></p>')
     });
 
     // // REPO 0
@@ -88,8 +90,8 @@ $.ajax(reposUrl,{
     //
     //
     // $a = $('<a href="#">').text(repos[0].forks_count);
-
-
+    //
+    //
     // // REPO 1
     // $h3 = $('<a href=https://github.com/jeremybdavis/Assignment7_Pt1>').text(repos[1].name);
     // $repo1.append($h3);
